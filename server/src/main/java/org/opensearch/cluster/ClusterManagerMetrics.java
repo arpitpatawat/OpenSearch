@@ -36,6 +36,7 @@ public final class ClusterManagerMetrics {
     public final Counter followerChecksFailureCounter;
     public final Counter asyncFetchFailureCounter;
     public final Counter asyncFetchSuccessCounter;
+    public final Counter lagCounter;
 
     public ClusterManagerMetrics(MetricsRegistry metricsRegistry) {
         clusterStateAppliersHistogram = metricsRegistry.createHistogram(
@@ -83,6 +84,7 @@ public final class ClusterManagerMetrics {
             "Counter for number of successful async fetches",
             COUNTER_METRICS_UNIT
         );
+        lagCounter = metricsRegistry.createCounter("lag.count", "Counter for different in the version due to lag", "1");
 
     }
 
